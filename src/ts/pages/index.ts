@@ -70,6 +70,11 @@ function mainLoad(dataView:DataView) {
         info["title"] = getMarkerTitle(marker);
         info["marker"] = marker;
         info["length"] = length;
+        switch (marker) {
+            default:
+                offset+=2+length;
+                break;
+        }
         
         infos.push(info);
         --c;
