@@ -21,6 +21,9 @@
     },
     "gulp-less/gulp-less.d.ts": {
       "ref": "af76bf46025371c760d8fe8c03cf874428da6124"
+    },
+    "es6-promise/es6-promise.d.ts": {
+      "ref": "785c18f0c897c44ea7fa1a47f3bcb48110658520"
     }
   }
 }
