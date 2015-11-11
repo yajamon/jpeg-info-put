@@ -1,0 +1,30 @@
+{
+  "name": "typescript-project-sample",
+  "version": "0.1.0",
+  "description": "typescript-project-sample",
+  "main": "gulpfile.js",
+  "scripts": {
+    "postinstall": "dtsm install",
+    "build": "gulp build",
+    "prewatch":"gulp build",
+    "watch": "gulp watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://yajamon@github.com/yajamon/typescript-project-sample.git"
+  },
+  "author": "yajamon <yajamon.tatsuki@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yajamon/typescript-project-sample/issues"
+  },
+  "homepage": "https://github.com/yajamon/typescript-project-sample#readme",
+  "devDependencies": {
+    "dtsm": "^0.10.3",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.3",
+    "gulp-typescript": "^2.8.1",
+    "typescript": "^1.5.3"
+  }
+}
