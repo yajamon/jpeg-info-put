@@ -71,6 +71,11 @@ function mainLoad(dataView:DataView) {
         info["marker"] = marker;
         info["length"] = length;
         switch (marker) {
+            case JpegMark.APP0:
+                var values:any = {};
+                info["values"] = values;
+                offset+=2+length;
+                break;
             default:
                 offset+=2+length;
                 break;
