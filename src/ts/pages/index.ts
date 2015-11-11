@@ -64,10 +64,12 @@ function mainLoad(dataView:DataView) {
     while (c>0) {    
     // while (offset < dataView.byteLength) {
         var marker = getMarker(dataView, offset);
+        var length = getChunkLength(dataView, offset);
         var info:any = {};
 
         info["title"] = getMarkerTitle(marker);
         info["marker"] = marker;
+        info["length"] = length;
         
         infos.push(info);
         --c;
@@ -89,4 +91,29 @@ function getMarkerTitle(marker:number) {
         return "unknown";
     }
     return JpegMark[marker];
+}
+
+function getChunkLength(dataView:DataView, offset:number) {
+    var marker = getMarker(dataView, offset);
+    if (!marker) {
+        return 0;
+    }
+    if (isNoLengthMarker(marker)) {
+        return 0;
+    }
+    var length = dataView.getUint16(offset+2);
+    return length;
+}
+
+function isNoLengthMarker(marker:JpegMark) {
+    var noLengtMarkers = [
+        JpegMark.SOI,
+    ];
+    var matchMarkers = noLengtMarkers.filter((mark)=>{
+        if (mark != marker) {
+            return false;
+        }
+        return true;
+    });
+    return matchMarkers.length > 0 ? true: false;
 }
