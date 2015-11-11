@@ -65,6 +65,8 @@ function mainLoad(dataView:DataView) {
     // while (offset < dataView.byteLength) {
         var marker = getMarker(dataView, offset);
         var info:any = {};
+
+        info["title"] = getMarkerTitle(marker);
         info["marker"] = marker;
         
         infos.push(info);
@@ -80,4 +82,11 @@ function getMarker(dataView:DataView, offset:number) {
     }
     var marker = <JpegMark>dataView.getUint16(offset);
     return marker;
+}
+
+function getMarkerTitle(marker:number) {
+    if (!JpegMark[marker]) {
+        return "unknown";
+    }
+    return JpegMark[marker];
 }
