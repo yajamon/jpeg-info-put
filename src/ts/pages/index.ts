@@ -73,6 +73,7 @@ function mainLoad(dataView:DataView) {
         switch (marker) {
             case JpegMark.APP0:
                 var values:any = {};
+                values["identifire"] = getBytes(5, dataView, offset+2+2);
                 info["values"] = values;
                 offset+=2+length;
                 break;
@@ -127,3 +128,13 @@ function isNoLengthMarker(marker:JpegMark) {
     });
     return matchMarkers.length > 0 ? true: false;
 }
+
+function getBytes (length:number, dataView:DataView, offset:number ) {
+    var bytes:number[] = [];
+    for (var index = 0; index < length; index++) {
+        var element = dataView.getUint8(offset+index);
+        bytes.push(element);
+    }
+    return bytes;
+}
+
