@@ -26,9 +26,19 @@ window.addEventListener("load", function(){
             if (reader.readyState == reader.DONE) { // DONE == 2
                 var dataView = new DataView(reader.result);
                 
+                var info = mainLoad(dataView);
+                
+                console.log(info);
             }
         };
         reader.readAsArrayBuffer(blob);
 
     }, false);
 });
+
+function mainLoad(dataView:DataView) {
+    var infos:any = [];
+    var offset = 0;
+
+    return infos;
+}
