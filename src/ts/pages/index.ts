@@ -73,7 +73,7 @@ function mainLoad(dataView:DataView) {
         switch (marker) {
             case JpegMark.APP0:
                 var values:any = {};
-                values["identifire"] = getBytes(5, dataView, offset+2+2);
+                values["identifire"] = convertBytesToString(getBytes(5, dataView, offset+2+2));
                 info["values"] = values;
                 offset+=2+length;
                 break;
@@ -138,3 +138,9 @@ function getBytes (length:number, dataView:DataView, offset:number ) {
     return bytes;
 }
 
+function convertBytesToString(bytes:number[]) {
+    var chars = bytes.map((value)=>{
+        return String.fromCharCode(value);
+    });
+    return chars.join("");
+}
