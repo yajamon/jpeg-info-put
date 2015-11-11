@@ -14,6 +14,21 @@ window.addEventListener("load", function(){
             var reader = <FileReader>loadEvent.target;
             img.src = reader.result;
         });
+        
+        var start = 0;
+        var end = file.size;
+        var blob = file.slice(start, end);
+        var reader = new FileReader();
+        
+        reader.onloadend = function(evt) {
+            var reader = <FileReader>evt.target;
+            
+            if (reader.readyState == reader.DONE) { // DONE == 2
+                var dataView = new DataView(reader.result);
+                
+            }
+        };
+        reader.readAsArrayBuffer(blob);
 
     }, false);
 });
